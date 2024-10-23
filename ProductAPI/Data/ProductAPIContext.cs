@@ -15,6 +15,7 @@ namespace ProductAPI.Data
         }
 
         public DbSet<ProductAPI.Models.Product> Product { get; set; } = default!;
+        public DbSet<Employee> Employee { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -32,6 +33,8 @@ namespace ProductAPI.Data
                      Stock = 300
                  }
                 );
+            modelBuilder.Entity<Employee>().HasData(
+                new Employee { Id =1, FirstName="First Name", LastName= "Last Name", Position="CEO", Salary=100000});
         }
     }
 }
